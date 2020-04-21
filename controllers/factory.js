@@ -36,10 +36,8 @@ exports.getAllDocs = Model =>
       .limitFields()
       .paginate();
     const docs = await promiseDocs.query;
-    //const docs = await Model.find();
-    //console.log(docs);
+
     const results = docs.length;
-    //res.headers.append('Content-Range', `${results}`);
     res.set('Content-Range', `${results}`);
     res.status(200).json({
       status: 'success',
@@ -48,7 +46,6 @@ exports.getAllDocs = Model =>
         data: docs
       }
     });
-    //res.headers.add('Content-Range', `${results}`);
   });
 
 //@desc         Get Single Model (with custom populate options)
